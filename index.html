@@ -3,6 +3,87 @@
 <head>
 <title>Temple</title>
 <script src="data.js"></script>
+<style>
+body { font-family: Arial; margin:0; background:#eee; }
+
+/* HEADER */
+header {
+  background: orange;
+  color:white;
+  text-align:center;
+  padding:15px;
+  font-size:22px;
+}
+
+/* NAV */
+nav {
+  background:#ccc;
+  text-align:center;
+  padding:10px;
+}
+nav a {
+  margin:10px;
+  color:blue;
+  font-weight:bold;
+}
+
+/* MAIN LAYOUT */
+.main {
+  display:flex;
+}
+
+/* LEFT PANEL */
+.left {
+  width:250px;
+  padding:10px;
+}
+
+/* RIGHT PANEL */
+.right {
+  flex:1;
+  padding:10px;
+}
+
+/* GRID */
+.grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px,1fr));
+  gap:10px;
+}
+
+/* CARD */
+.card {
+  background:white;
+  padding:5px;
+  border-radius:10px;
+  text-align:center;
+}
+
+.card img {
+  width:100%;
+  height:100px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.category {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  font-weight:bold;
+  height:100px;
+  border-radius:10px;
+}
+
+.fellow { background:orange; }
+.master { background:skyblue; }
+.architect { background:#1976d2; }
+.tech { background:#ff7043; }
+
+select { padding:5px; margin:5px; }
+
+</style>
 </head>
 
 <body>
