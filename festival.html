@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Festival</title>
+<script src="data.js"></script>
+
+<style>
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+  gap:10px;
+}
+
+img{
+  width:100%;
+  cursor:pointer;
+}
+
+#modal{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:black;
+}
+
+#modal img{
+  width:90%;
+  margin:5% auto;
+  display:block;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2 id="title"></h2>
+
+<h3>📸 Photos</h3>
+<div class="grid" id="photos"></div>
+
+<h3>🎥 Videos</h3>
+<div id="videos"></div>
+
+<h3>💰 Donations</h3>
+<ul id="donations"></ul>
+
+<h3>🧾 Bills</h3>
+<ul id="bills"></ul>
+
+<!-- FULL SCREEN -->
+<div id="modal" onclick="closeImg()">
+  <img id="fullImg">
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const year = params.get("year");
+const fest = params.get("fest");
+
+document.getElementById("title").innerText = year + " - " + fest;
+
+const d = data[year]?.[fest];
+
+if(!d){
+  document.body.innerHTML = "No Data Available";
+}
+
+/* PHOTOS */
+d.photos.forEach(p=>{
+  let img = document.createElement("img");
+  img.src = p;
+  img.onclick = ()=>openImg(p);
+
+  document.getElementById("photos").appendChild(img);
+});
+
+/* VIDEOS */
+d.videos.forEach(v=>{
+  let vid = document.createElement("video");
+  vid.src = v;
+  vid.controls = true;
+  vid.width = 300;
+
+  document.getElementById("videos").appendChild(vid);
+});
+
+/* DONATIONS */
+d.donations.forEach(x=>{
+  let li = document.createElement("li");
+  li.innerText = x;
+  document.getElementById("donations").appendChild(li);
+});
+
+/* BILLS */
+d.bills.forEach(x=>{
+  let li = document.createElement("li");
+  li.innerText = x;
+  document.getElementById("bills").appendChild(li);
+});
+
+/* FULL SCREEN */
+function openImg(src){
+  document.getElementById("modal").style.display="block";
+  document.getElementById("fullImg").src = src;
+}
+
+function closeImg(){
+  document.getElementById("modal").style.display="none";
+}
+
+</script>
+
+</body>
+</html>

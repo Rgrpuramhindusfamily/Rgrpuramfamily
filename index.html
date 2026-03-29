@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Temple</title>
+<script src="data.js"></script>
+</head>
+
+<body>
+
+<h2>Select Year & Festival</h2>
+
+<select id="year">
+  <option>2025</option>
+  <option>2026</option>
+  <option>2027</option>
+  <option>2028</option>
+</select>
+
+<select id="festival">
+  <option>Pongal</option>
+  <option>Thirunal</option>
+  <option>Jathara</option>
+  <option>Vinayaka Chavithi</option>
+  <option>Om Sakthi</option>
+  <option>Ayyappa Swamy</option>
+</select>
+
+<br><br>
+
+<button onclick="go()">View</button>
+
+<script>
+function go(){
+  const year = document.getElementById("year").value;
+  const fest = document.getElementById("festival").value;
+
+  window.location.href = `festival.html?year=${year}&fest=${fest}`;
+}
+</script>
+
+</body>
+</html>
